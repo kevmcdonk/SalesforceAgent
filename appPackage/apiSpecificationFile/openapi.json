@@ -1,0 +1,101 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Salesforce API",
+    "description": "API for engaging with Salesforce",
+    "version": "v1.0"
+  },
+  "servers": [
+    {
+      "url": "https://mcd79-dev-ed.develop.my.salesforce.com"
+    }
+  ],
+  "paths": {
+    "/services/data/v60.0/sobjects/Case/": {
+      "description": "raise a case in Salesforce",
+      "post": {
+        "summary": "Create a new case",
+        "description": "Create a new case in Salesforce.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Subject": {
+                    "type": "string",
+                    "description": "The subject of the case"
+                  },
+                  "Status": {
+                    "type": "string",
+                    "description": "The status of the case"
+                  },
+                  "Origin": {
+                    "type": "string",
+                    "description": "The origin of the case"
+                  },
+                  "Description": {
+                    "type": "string",
+                    "description": "The description of the case"
+                  }
+                },
+                "required": [
+                  "Subject",
+                  "Status",
+                  "Origin"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Case created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The ID of the created case"
+                    },
+                    "success": {
+                      "type": "boolean",
+                      "description": "Indicates if the case was created successfully"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "List of errors, if any"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "raiseCase"
+      }
+    }
+  }
+}

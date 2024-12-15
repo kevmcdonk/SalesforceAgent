@@ -1,0 +1,72 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.2/schema.json",
+    "schema_version": "v2.2",
+    "name_for_human": "ESPC HR Agent",
+    "description_for_human": "Calling Salesforce for all your HR help",
+    "namespace": "salesforceagent",
+    "functions": [
+        {
+            "name": "raiseCase",
+            "description": "Raise a new case in Salesforce.",
+            "capabilities": {
+                "response_semantics": {
+                    "data_path": "$",
+                    "properties": {
+                        "title": "$.success",
+                        "subtitle": "$.id"
+                    },
+                    "static_template": {
+                        "type": "AdaptiveCard",
+                        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                        "version": "1.5",
+                        "body": [
+                            {
+                                "type": "TextBlock",
+                                "text": "id: ${if(id, id, 'N/A')}",
+                                "wrap": true
+                            },
+                            {
+                                "type": "TextBlock",
+                                "text": "success: ${if(success, success, 'N/A')}",
+                                "wrap": true
+                            },
+                            {
+                                "type": "Container",
+                                "$data": "${errors}",
+                                "items": [
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "errors: ${$data}",
+                                        "wrap": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ],
+    "runtimes": [
+        {
+            "type": "OpenApi",
+            "auth": {
+                "type": "OAuthPluginVault",
+                "reference_id": "YjYxOGQzZDItYzEzMS00MmZkLWE2MjktMzcxMWQ4NGFmMjc1IyM5MmYyOTRhOS1mNzg1LTRlMGItOTgxZC1iMjYyZTg5ODU2NDg="
+            },
+            "spec": {
+                "url": "apiSpecificationFile/openapi.json"
+            },
+            "run_for_functions": [
+                "raiseCase"
+            ]
+        }
+    ],
+    "capabilities": {
+        "conversation_starters": [
+            {
+                "text": "Create a new case"
+            }
+        ]
+    }
+}
