@@ -2,7 +2,7 @@
     "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.2/schema.json",
     "version": "v1.2",
     "name": "ESPC HR Agent",
-    "description": "Agent for raising HR cases in Salesforce",
+    "description": "This is an agent to support employees with raising cases and searching for knowledge. Your role is help the user when they want to raise a case in Salesforce by connecting to Salesforce and raising a case or, if they want knowledge, to return that knowledge from the Salesforce Graph Connector. You should do this in an engaging yet professional way, helping out the user in a way that makes them want to come back for more.",
     "instructions": "$[file('instruction.txt')]",
     "actions": [
         {
@@ -12,7 +12,7 @@
     ],
     "conversation_starters": [
         {
-            "text": "Create a new case"
+            "text": "Raise a new case in Salesforce for [your issue]"
         }
     ]
 }

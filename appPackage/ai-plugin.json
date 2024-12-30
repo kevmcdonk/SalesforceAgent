@@ -7,7 +7,7 @@
     "functions": [
         {
             "name": "raiseCase",
-            "description": "Raise a new case in Salesforce.",
+            "description": "Raise a new case in Salesforce for the supplied issue.",
             "capabilities": {
                 "response_semantics": {
                     "data_path": "$",

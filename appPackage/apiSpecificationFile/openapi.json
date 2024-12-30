@@ -14,8 +14,8 @@
     "/services/data/v60.0/sobjects/Case/": {
       "description": "raise a case in Salesforce",
       "post": {
-        "summary": "Create a new case",
-        "description": "Create a new case in Salesforce.",
+        "summary": "Raise a case in Salesforce for the supplied issue",
+        "description": "Raise a case in Salesforce using the case API with the subject and origin of the case. From the issue raised, suggest a subject and description with the Status as New and Origin as Agent.",
         "requestBody": {
           "required": true,
           "content": {
